@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Cycle - Sciencia Saga</title>
+  <!-- Font Awesome CDN link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS file link -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Gradient background */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #e8f7ff, #086f8e);
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Content container */
+    .content-container {
+      margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      display: none; /* Hide all content containers initially */
+    }
+
+    /* Active content container */
+    .content-container.active {
+      display: flex; /* Show only the active container */
+    }
+
+    /* Main box styling */
+    .main-box {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .main-box h1 {
+      font-size: 2.5rem;
+      color: #1d4ed8;
+      margin-bottom: 20px;
+    }
+
+    .main-box p {
+      font-size: 1.1rem;
+      color: #374151;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .main-box img {
+      margin-top: 20px;
+      border-radius: 10px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Card container */
+    .cards-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* Card styling */
+    .card {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin: 10px;
+      flex: 1 1 30%;
+      text-align: left;
+      min-width: 250px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    /* Navigation buttons */
+   
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .pagination button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    .pagination button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Footer styling */
+    footer {
+      margin-top: auto;
+      background-color: #1d4ed8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Header styling */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      z-index: 1000;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="images/ScieSaga.png" alt="Sciencia Saga Logo" />
+      Sciencia Saga
+    </a>
+    <nav class="navbar">
+      <a href="index.html#home">home</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#explore">explore</a>
+      <a href="index.html#teacher">Scientist</a>
+      <a href="index.html#gallery">gallery</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+    <div class="icons">
+      <div class="fas fa-user" id="login-btn"></div>
+      <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+  </header>
+
+  <div class="content-container active">
+    <div class="main-box">
+      <img src="images/Periodic.png" alt="Periodic Table Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-table"></i> The Periodic Table</h1>
+      <p>The periodic table is a systematic arrangement of chemical elements, organized by their atomic number, electron configuration, and recurring chemical properties. Let's explore how elements are classified and their significance in chemistry!</p>
+
+      <!-- Cards container -->
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-atom"></i> 1. Elements</h2>
+          <p>Definition: Elements are pure substances consisting of only one type of atom. Each element has unique properties and is represented by a one- or two-letter symbol.</p>
+          <p>Fun Fact: There are currently 118 known elements, and they are categorized into metals, nonmetals, and metalloids!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-balance-scale"></i> 2. Atomic Number</h2>
+          <p>Definition: The atomic number is the number of protons in the nucleus of an atom, determining the element's identity and position in the periodic table.</p>
+          <p>Fun Fact: Hydrogen, with an atomic number of 1, is the simplest and most abundant element in the universe!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-flask"></i> 3. Chemical Symbols</h2>
+          <p>Definition: Each element is assigned a unique chemical symbol, often derived from its Latin name, such as 'Fe' for iron and 'Na' for sodium.</p>
+          <p>Fun Fact: The chemical symbol for gold is 'Au', which comes from the Latin word 'aurum' meaning gold!</p>
+        </div>
+
+        <div class="card">
+          <h2> Why is the Periodic Table Important?</h2>
+          <p>The periodic table is a fundamental tool in chemistry that organizes elements based on their properties and relationships. It helps scientists understand and predict the behavior of elements and compounds.
+            <br><br>
+            By studying the periodic table, chemists can identify trends such as reactivity, atomic size, and electronegativity. This knowledge is essential for applications in various fields, including medicine, engineering, and environmental science.
+            <br><br>
+            In summary, the periodic table is not just a collection of elements; it is a vital resource that supports scientific research, education, and innovation. Understanding the periodic table allows us to appreciate the complexity and beauty of the natural world around us.
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+  <div class="content-container">
+    <div class="main-box">
+      <img src="images/foodweb.png" alt="Food Web Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-utensils"></i> The Food Web</h1>
+      <p>The food chain cycle illustrates how energy and nutrients flow through ecosystems. It shows the interconnectedness of different organisms and their roles in maintaining a balanced environment. Let's explore the various components of the food web!</p>
+  
+      <!-- Cards container -->
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-leaf"></i> 1. Producers</h2>
+          <p>Definition: Producers are organisms, primarily plants, that can make their own food using sunlight through
+            a process called photosynthesis.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-fish"></i> 2. Primary Consumers</h2>
+          <p>Definition: Primary consumers are herbivores that eat plants to obtain energy.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-paw"></i> 3. Secondary Consumers</h2>
+          <p>Definition: Secondary consumers are carnivores that eat primary consumers to gain energy.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-skull-crossbones"></i> 4. Decomposers</h2>
+          <p>Definition: Decomposers break down dead organic matter, returning nutrients to the soil.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-container">
+    <div class="main-box">
+      <img src="images/sensory.png" alt="Sensory Information Transmission Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-eye"></i> Sensory Information Transmission</h1>
+      <p>Sensory information transmission refers to the process by which sensory stimuli are converted into neural signals and processed by the nervous system. Let's explore how our senses work to gather information from the environment!</p>
+
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-hand-pointer"></i> 1. Sensory Reception</h2>
+          <p>Definition: Sensory receptors detect stimuli such as light, sound, touch, taste, and smell.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-sign-in-alt"></i> 2. Transduction</h2>
+          <p>Definition: Sensory receptors convert the detected stimuli into electrical signals, a process known as transduction.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-arrow-right"></i> 3. Neural Transmission</h2>
+          <p>Definition: The electrical signals are transmitted through sensory neurons to the central nervous system for processing.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-brain"></i> 4. Perception</h2>
+          <p>Definition: The brain processes the sensory information and creates a perception, allowing us to interpret and respond to our environment.</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+  <!-- Pagination buttons -->
+  <div class="pagination">
+    <button id="prevBtn" disabled>Previous</button>
+    <button id="nextBtn">Next</button>
+  </div>
+  
+  <script>
+    // Pagination script
+    let currentPage = 0;
+    const contentContainers = document.querySelectorAll('.content-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updatePagination() {
+      contentContainers.forEach((container, index) => {
+        container.classList.toggle('active', index === currentPage);
+      });
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === contentContainers.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePagination();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < contentContainers.length - 1) {
+        currentPage++;
+        updatePagination();
+      }
+    });
+
+    // Initialize pagination
+    updatePagination();
+  </script>
+
+
+</body>
+
+</html>

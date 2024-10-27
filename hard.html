@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Cycle - Sciencia Saga</title>
+  <!-- Font Awesome CDN link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS file link -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Gradient background */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #e8f7ff, #086f8e);
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Content container */
+    .content-container {
+      margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      display: none; /* Hide all content containers initially */
+    }
+
+    /* Active content container */
+    .content-container.active {
+      display: flex; /* Show only the active container */
+    }
+
+    /* Main box styling */
+    .main-box {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .main-box h1 {
+      font-size: 2.5rem;
+      color: #1d4ed8;
+      margin-bottom: 20px;
+    }
+
+    .main-box p {
+      font-size: 1.1rem;
+      color: #374151;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .main-box img {
+      margin-top: 20px;
+      border-radius: 10px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Card container */
+    .cards-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* Card styling */
+    .card {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin: 10px;
+      flex: 1 1 30%;
+      text-align: left;
+      min-width: 250px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    /* Navigation buttons */
+   
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .pagination button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    .pagination button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Footer styling */
+    footer {
+      margin-top: auto;
+      background-color: #1d4ed8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Header styling */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      z-index: 1000;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="images/ScieSaga.png" alt="Sciencia Saga Logo" />
+      Sciencia Saga
+    </a>
+    <nav class="navbar">
+      <a href="index.html#home">home</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#explore">explore</a>
+      <a href="index.html#teacher">Scientist</a>
+      <a href="index.html#gallery">gallery</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+    <div class="icons">
+      <div class="fas fa-user" id="login-btn"></div>
+      <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+  </header>
+
+  <div class="content-container active">
+    <div class="main-box">
+      <img src="images/hydrosphere.png" alt="Hydrosphere Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-water"></i> The Hydrosphere</h1>
+      <p>The hydrosphere encompasses all the water present on Earth, including oceans, rivers, lakes, glaciers, and even the moisture in the atmosphere. Understanding the hydrosphere is crucial for grasping the Earth's climate, ecosystems, and geological processes. Let’s dive into its complex components and significance!</p>
+  
+      <!-- Cards container -->
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-globe"></i> 1. Oceans</h2>
+          <p>Definition: Oceans cover about 71% of the Earth's surface and are vital for regulating global climate and weather patterns.</p>
+          <p>Fun Fact: The Pacific Ocean is the largest and deepest ocean, holding more than half of the Earth's oceanic water!</p>
+        </div>
+  
+        <div class="card">
+          <h2><i class="fas fa-tint"></i> 2. Freshwater Sources</h2>
+          <p>Definition: Freshwater sources, such as rivers, lakes, and glaciers, are crucial for human consumption, agriculture, and industrial use, representing only about 2.5% of the Earth's total water.</p>
+          <p>Fun Fact: The Amazon River, the largest river by discharge volume of water, is so vast that it contributes approximately 20% of the total freshwater discharge into the oceans!</p>
+        </div>
+  
+        <div class="card">
+          <h2><i class="fas fa-cloud-rain"></i> 3. Water Cycle</h2>
+          <p>Definition: The water cycle is the continuous movement of water within the hydrosphere through processes like evaporation, condensation, and precipitation.</p>
+          <p>Fun Fact: Over 90% of the water vapor in the atmosphere originates from the oceans!</p>
+        </div>
+  
+        <div class="card">
+          <h2> Why is the Hydrosphere Important?</h2>
+          <p>The hydrosphere plays a critical role in supporting life on Earth. It regulates temperature, supports ecosystems, and provides essential resources for drinking and agriculture.
+            <br><br>
+            Understanding the hydrosphere is crucial for addressing climate change and water resource management. For instance, rising sea levels due to climate change can significantly impact coastal communities and ecosystems.
+            <br><br>
+            In summary, the hydrosphere is not merely a collection of water bodies; it is a dynamic system that influences weather, climate, and the overall health of our planet. By studying the hydrosphere, we cultivate a greater understanding of environmental issues and foster a sense of responsibility towards our water resources.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="content-container active">
+    <div class="main-box">
+      <img src="images/solar-system.png" alt="Solar System Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-globe"></i> The Solar System</h1>
+      <p>The solar system is a vast and complex system of celestial bodies, including the Sun, planets, moons, asteroids, and comets. Let’s explore the fascinating components and dynamics that govern our solar neighborhood!</p>
+  
+      <!-- Cards container -->
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-sun"></i> 1. The Sun</h2>
+          <p>Definition: The Sun is a massive star at the center of our solar system, providing the necessary heat and light to sustain life on Earth.</p>
+          <p>Fun Fact: The Sun accounts for about 99.86% of the total mass of the solar system!</p>
+        </div>
+  
+        <div class="card">
+          <h2><i class="fas fa-planet"></i> 2. The Planets</h2>
+          <p>Definition: There are eight major planets in our solar system, classified as terrestrial (Mercury, Venus, Earth, Mars) and gas giants (Jupiter, Saturn) and ice giants (Uranus, Neptune).</p>
+          <p>Fun Fact: Jupiter is the largest planet, with a diameter of about 86,881 miles, making it more than 11 times wider than Earth!</p>
+        </div>
+  
+        <div class="card">
+          <h2><i class="fas fa-moon"></i> 3. Moons and Satellites</h2>
+          <p>Definition: Many planets have natural satellites, or moons, that orbit them. Earth has one moon, while Jupiter has over 79 known moons!</p>
+          <p>Fun Fact: Saturn's moon Titan is larger than the planet Mercury and has a dense atmosphere!</p>
+        </div>
+  
+        <div class="card">
+          <h2> Why is Understanding the Solar System Important?</h2>
+          <p>Understanding the solar system is crucial for grasping the fundamental principles of astronomy and the universe. It allows us to learn about the formation of celestial bodies, the laws of motion, and the influence of gravitational forces.
+            <br><br>
+            Moreover, studying other planets and moons can provide insights into Earth's own climate and geological processes. By understanding phenomena like asteroid impacts, we can better prepare for potential hazards.
+            <br><br>
+            In summary, the solar system is not just a collection of celestial objects; it is a dynamic system that shapes the universe we inhabit. By exploring this system, we foster curiosity, innovation, and a deeper appreciation for the cosmos and our place within it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="content-container active">
+    <div class="main-box">
+      <img src="images/Volcanoes.png" alt="Volcano Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-fire"></i> Volcanoes</h1>
+      <p>Volcanoes are geological formations where molten rock, ash, and gases escape from beneath the Earth's crust. They play a significant role in shaping landscapes, affecting climate, and influencing ecosystems. Let’s explore the fascinating processes and types of volcanoes!</p>
+  
+      <!-- Cards container -->
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-mountain"></i> 1. Types of Volcanoes</h2>
+          <p>Definition: There are three main types of volcanoes: shield volcanoes (broad and gently sloping), stratovolcanoes (steep and conical), and cinder cone volcanoes (small and steep-sided).</p>
+          <p>Fun Fact: Mauna Loa in Hawaii is the world's largest volcano and is classified as a shield volcano!</p>
+        </div>
+  
+        <div class="card">
+          <h2><i class="fas fa-explosion"></i> 2. Volcanic Eruptions</h2>
+          <p>Definition: Volcanic eruptions occur when pressure from molten rock (magma) builds up and is released, resulting in the ejection of lava, ash, and gases into the atmosphere.</p>
+          <p>Fun Fact: The eruption of Mount St. Helens in 1980 was one of the most significant volcanic events in U.S. history, drastically altering the surrounding landscape!</p>
+        </div>
+  
+        <div class="card">
+          <h2><i class="fas fa-cloud-showers-heavy"></i> 3. Volcanic Hazards</h2>
+          <p>Definition: Volcanoes can pose various hazards, including lava flows, ashfall, pyroclastic flows, and volcanic gases, which can be harmful to both humans and the environment.</p>
+          <p>Fun Fact: Volcanic ash can travel thousands of miles from the eruption site, affecting air travel and air quality!</p>
+        </div>
+  
+        <div class="card">
+          <h2> Why are Volcanoes Important?</h2>
+          <p>Volcanoes are essential for understanding Earth’s geological processes and play a significant role in the planet's evolution. They contribute to the formation of new land, enrich soils with nutrients, and release gases that are vital for the atmosphere.
+            <br><br>
+            Moreover, studying volcanoes helps us predict eruptions and mitigate their hazards, safeguarding communities and infrastructure. For instance, scientists use seismographs and gas measurements to monitor volcanic activity and provide early warnings.
+            <br><br>
+            In summary, volcanoes are not just destructive forces; they are dynamic systems that contribute to Earth’s diversity and vitality. By learning about volcanoes, we gain insights into the planet's history and enhance our preparedness for natural disasters.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Pagination buttons -->
+  <div class="pagination">
+    <button id="prevBtn" disabled>Previous</button>
+    <button id="nextBtn">Next</button>
+  </div>
+  
+  <script>
+    // Pagination script
+    let currentPage = 0;
+    const contentContainers = document.querySelectorAll('.content-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updatePagination() {
+      contentContainers.forEach((container, index) => {
+        container.classList.toggle('active', index === currentPage);
+      });
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === contentContainers.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePagination();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < contentContainers.length - 1) {
+        currentPage++;
+        updatePagination();
+      }
+    });
+
+    // Initialize pagination
+    updatePagination();
+  </script>
+
+
+</body>
+
+</html>

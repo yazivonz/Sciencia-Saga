@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Adventure Game</title>
+    <style>
+        /* Basic Styling */
+        body {
+            background: url('../images/activities/3.png') no-repeat center center;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 200px;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        /* Game Container */
+        .game-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .planet {
+            background-color: #dfd3e7;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+            width: 150px; /* Set width for the planet boxes */
+        }
+
+        .planet:hover {
+            transform: scale(1.05);
+        }
+
+        .info, .quiz-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: rgb(218, 208, 255);
+            display: none; /* Hidden by default */
+        }
+
+        .submit-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #fdbb2d;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .submit-button:hover {
+            background-color: #f0c040;
+        }
+
+        .reset-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #fdbb2d;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .reset-button:hover {
+            background-color: #f0c040;
+        }
+
+        /* Popup Modal Styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Could be more or less, depending on screen size */
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Space Adventure Game</h1>
+        <p>Explore the universe and collect stars!</p>
+    </header>
+
+    <div class="game-container" id="game-container"></div>
+
+    <button class="reset-button" onclick="resetGame()">Reset Game</button>
+
+    <div id="info" class="info"></div>
+
+    <div id="quiz" class="quiz-container">
+        <h3>Answer the Question</h3>
+        <div id="quiz-question"></div>
+        <input type="text" id="quiz-answer" placeholder="Your Answer">
+        <button class="submit-button" onclick="checkAnswer()">Submit Answer</button>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+    <script>
+        const planets = [
+            { id: 'mercury', name: 'Mercury', question: 'What is the closest planet to the Sun?', answer: 'mercury' },
+            { id: 'venus', name: 'Venus', question: 'Which planet is known as Earth\'s twin?', answer: 'venus' },
+            { id: 'earth', name: 'Earth', question: 'Which planet do we live on?', answer: 'earth' },
+            { id: 'mars', name: 'Mars', question: 'What is the red planet?', answer: 'mars' },
+            { id: 'jupiter', name: 'Jupiter', question: 'Which planet is the largest in the solar system?', answer: 'jupiter' },
+            { id: 'saturn', name: 'Saturn', question: 'Which planet is known for its rings?', answer: 'saturn' },
+            { id: 'uranus', name: 'Uranus', question: 'Which planet rotates on its side?', answer: 'uranus' },
+            { id: 'neptune', name: 'Neptune', question: 'Which planet is known for its deep blue color?', answer: 'neptune' },
+        ];
+
+        let collectedStars = 0;
+
+        // Create the game board
+        function createBoard() {
+            const gameContainer = document.getElementById('game-container');
+            gameContainer.innerHTML = ''; // Clear the current game
+
+            planets.forEach(planet => {
+                const planetDiv = document.createElement('div');
+                planetDiv.classList.add('planet');
+                planetDiv.setAttribute('data-id', planet.id);
+                planetDiv.innerText = planet.name; // Display the planet name
+                planetDiv.addEventListener('click', () => showInfo(planet)); // Show info when clicked
+                gameContainer.appendChild(planetDiv);
+            });
+        }
+
+        // Show info about the selected planet
+        function showInfo(planet) {
+            const info = document.getElementById('info');
+            info.innerHTML = `<strong>${planet.name}</strong>: Click to answer the question!`; // Display planet name
+            info.style.display = 'block'; // Show the info box
+
+            // Set up the quiz question
+            document.getElementById('quiz-question').innerText = planet.question;
+            document.getElementById('quiz').style.display = 'block'; // Show quiz section
+            document.getElementById('quiz-answer').value = ''; // Clear previous input
+        }
+
+        function checkAnswer() {
+            const answer = document.getElementById('quiz-answer').value.toLowerCase();
+            const currentPlanet = planets.find(planet => planet.name.toLowerCase() === document.getElementById('quiz-question').innerText.split(' ')[0].toLowerCase());
+
+            const modal = document.getElementById("myModal");
+            const modalMessage = document.getElementById("modal-message");
+
+            if (answer === currentPlanet.answer) {
+                collectedStars++;
+                modalMessage.innerText = 'Correct! Stars Collected: ' + collectedStars;
+            } else {
+                modalMessage.innerText = 'Incorrect! Try again.';
+            }
+
+            modal.style.display = "block"; // Show the modal
+
+            document.getElementById('quiz-answer').value = ''; // Clear the input field
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none"; // Hide the modal
+        }
+
+        function resetGame() {
+            collectedStars = 0; // Reset stars count
+            createBoard(); // Recreate the game board
+            document.getElementById('info').style.display = 'none'; // Hide the info box
+            document.getElementById('quiz').style.display = 'none'; // Hide quiz section
+            closeModal(); // Close modal if it's open
+        }
+
+        // Initialize the game
+        createBoard();
+    </script>
+</body>
+</html>

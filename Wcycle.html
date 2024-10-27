@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Cycle Interactive Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Basic Styling */
+        body {
+            background: url('../images/activities/4.png') no-repeat center center;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 200px;
+        }
+
+        /* Game Container */
+        .game-container {
+            padding: 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            cursor: pointer;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .card:hover {
+            background-color: #007bbf;
+            color: white;
+        }
+
+        .info,
+        .quiz-container,
+        .fill-blanks {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #007bbf;
+            border-radius: 5px;
+            background-color: #e0f7fa;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .reset-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bbf;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .reset-button:hover {
+            background-color: #005f8f;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Quiz and Fill in the Blanks styles */
+        .quiz,
+        .blanks {
+            margin: 10px 0;
+        }
+
+        .answer {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+
+        .answer input {
+            width: 60%;
+        }
+
+        .submit-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007bbf;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .submit-button:hover {
+            background-color: #005f8f;
+        }
+
+        /* Header styling */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #fff;
+            z-index: 1000;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/ScieSaga.png" alt="Sciencia Saga Logo" />
+            Sciencia Saga
+        </a>
+        <nav class="navbar">
+            <a href="index.html#home">home</a>
+            <a href="index.html#about">about</a>
+            <a href="index.html#explore">explore</a>
+            <a href="index.html#teacher">Scientist</a>
+            <a href="index.html#gallery">gallery</a>
+            <a href="index.html#contact">contact</a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-user" id="login-btn"></div>
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+    </header>
+
+
+    <h1>Water Cycle Interactive Game</h1>
+    <h2>Click on the stages of the water cycle to learn more!</h2>
+
+    <div class="game-container" id="game-container"></div>
+
+    <button class="reset-button" onclick="resetGame()">Reset Game</button>
+
+    <div id="info" class="info"></div>
+
+    <!-- Quiz Section -->
+    <div id="quiz" class="quiz-container">
+        <h3>True or False Quiz</h3>
+        <div class="quiz">
+            <div class="answer">
+                <label>Water vapor is invisible:</label>
+                <input type="text" id="answer1">
+            </div>
+            <div class="answer">
+                <label>Rain is part of the water cycle:</label>
+                <input type="text" id="answer2">
+            </div>
+            <button class="submit-button" onclick="checkQuiz()">Submit Quiz</button>
+        </div>
+    </div>
+
+    <!-- Fill in the Blanks Section -->
+    <div id="fill-in-the-blanks" class="fill-blanks">
+        <h3>Fill in the Blanks</h3>
+        <p>Complete the sentences:</p>
+        <div class="blanks">
+            <div class="answer">
+                <label>____ is the process of water turning into vapor.</label>
+                <input type="text" id="blank1">
+            </div>
+            <div class="answer">
+                <label>After condensation, water falls back as ____.</label>
+                <input type="text" id="blank2">
+            </div>
+            <button class="submit-button" onclick="checkBlanks()">Submit Blanks</button>
+        </div>
+    </div>
+
+    <!-- Score Modal -->
+    <div id="scoreModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Your Score</h2>
+            <p id="scoreText"></p>
+            <button class="reset-button" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const stages = [
+            { id: 'evaporation', text: 'Evaporation', description: 'The process of water turning into vapor.' },
+            { id: 'condensation', text: 'Condensation', description: 'The process of water vapor cooling and turning into liquid.' },
+            { id: 'precipitation', text: 'Precipitation', description: 'Water falling from clouds as rain, snow, sleet, or hail.' },
+            { id: 'collection', text: 'Collection', description: 'Water gathering in rivers, lakes, and oceans.' },
+        ];
+
+        // Shuffle cards
+        function shuffle(array) {
+            array.sort(() => Math.random() - 0.5);
+        }
+
+        // Create the game board
+        function createBoard() {
+            shuffle(stages);
+            const gameContainer = document.getElementById('game-container');
+            stages.forEach(stage => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.setAttribute('data-id', stage.id);
+                card.innerText = stage.text; // Display the stage text
+                card.addEventListener('click', () => showInfo(stage)); // Show info when clicked
+                gameContainer.appendChild(card);
+            });
+        }
+
+        // Show info about the selected stage
+        function showInfo(stage) {
+            const info = document.getElementById('info');
+            info.innerHTML = `<strong>${stage.text}</strong>: ${stage.description}`; // Display the description
+            info.style.display = 'block'; // Show the info box
+            document.getElementById('quiz').style.display = 'block'; // Show quiz section
+            document.getElementById('fill-in-the-blanks').style.display = 'block'; // Show fill-in-the-blanks section
+        }
+
+        function resetGame() {
+            const gameContainer = document.getElementById('game-container');
+            gameContainer.innerHTML = ''; // Clear the current game
+            document.getElementById('info').style.display = 'none'; // Hide the info box
+            document.getElementById('quiz').style.display = 'none'; // Hide quiz section
+            document.getElementById('fill-in-the-blanks').style.display = 'none'; // Hide fill-in-the-blanks section
+            createBoard(); // Recreate the game board
+        }
+
+        // Quiz Check Function
+        function checkQuiz() {
+            const answer1 = document.getElementById('answer1').value.toLowerCase();
+            const answer2 = document.getElementById('answer2').value.toLowerCase();
+            let score = 0;
+
+            if (answer1 === 'true') score++;
+            if (answer2 === 'true') score++;
+
+            showScore(`Quiz Score: ${score}/2`); // Display score in modal
+        }
+
+        // Fill in the Blanks Check Function
+        function checkBlanks() {
+            const blank1 = document.getElementById('blank1').value.toLowerCase();
+            const blank2 = document.getElementById('blank2').value.toLowerCase();
+            let score = 0;
+
+            if (blank1 === 'evaporation') score++;
+            if (blank2 === 'rain' || blank2 === 'snow' || blank2 === 'sleet' || blank2 === 'hail') score++;
+
+            showScore(`Fill in the Blanks Score: ${score}/2`); // Display score in modal
+        }
+
+        // Show Score Modal
+        function showScore(scoreText) {
+            document.getElementById('scoreText').innerText = scoreText; // Set the score text
+            document.getElementById('scoreModal').style.display = 'block'; // Show the modal
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('scoreModal').style.display = 'none'; // Hide the modal
+        }
+
+        // Initialize the game
+        createBoard();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volcano Eruption Challenge!</title>
+    <style>
+       body {
+            background: url('../images/activities/2.png') no-repeat center center;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 200px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #8B0000;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #volcano {
+            width: 200px;
+            height: 150px;
+            background-color: #8B0000;
+            margin: 20px auto;
+            position: relative;
+            border-radius: 100px 100px 0 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #lava {
+            width: 100%;
+            height: 0;
+            background-color: orange;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 50%;
+            transition: height 0.5s ease;
+            display: none;
+        }
+
+        .ingredient {
+            display: inline-block;
+            padding: 10px;
+            background-color: #d9d9d9;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .ingredient.selected {
+            background-color: #c1e1c1;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: green;
+        }
+
+        #startButton, #resetButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #startButton:hover, #resetButton:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        .ingredient-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Volcano Eruption Challenge!</h1>
+        <div id="volcano">
+            <div id="lava"></div>
+        </div>
+
+        <h2>Select Your Ingredients:</h2>
+        <div class="ingredient-container">
+            <div class="ingredient" data-ingredient="baking_soda">Baking Soda</div>
+            <div class="ingredient" data-ingredient="vinegar">Vinegar</div>
+            <div class="ingredient" data-ingredient="food_color">Food Coloring</div>
+            <div class="ingredient" data-ingredient="dish_soap">Dish Soap</div>
+            <div class="ingredient" data-ingredient="water">Water</div>
+            <div class="ingredient" data-ingredient="cornstarch">Cornstarch</div>
+            <div class="ingredient" data-ingredient="dishwashing_liquid">Dishwashing Liquid</div>
+            <div class="ingredient" data-ingredient="glitter">Glitter</div>
+            <div class="ingredient" data-ingredient="coffee_grounds">Coffee Grounds</div>
+            <div class="ingredient" data-ingredient="sugar">Sugar</div>
+        </div>
+
+        <div id="message"></div>
+        <button id="startButton">Start Eruption!</button>
+        <button id="resetButton">Reset Game</button>
+    </div>
+
+    <script>
+        let lava = document.getElementById('lava');
+        let message = document.getElementById('message');
+        let selectedIngredients = [];
+
+        // Ingredient selection event listeners
+        document.querySelectorAll('.ingredient').forEach(item => {
+            item.addEventListener('click', () => {
+                let ingredient = item.getAttribute('data-ingredient');
+                if (!selectedIngredients.includes(ingredient)) {
+                    selectedIngredients.push(ingredient);
+                    item.classList.add('selected'); // Highlight selected ingredient
+                } else {
+                    selectedIngredients = selectedIngredients.filter(i => i !== ingredient);
+                    item.classList.remove('selected'); // Remove highlight if deselected
+                }
+            });
+        });
+
+        // Start Eruption button click event
+        document.getElementById('startButton').addEventListener('click', () => {
+            if (checkIngredients()) {
+                lava.style.display = 'block';
+                lava.style.height = '150px'; // Eruption effect
+                message.innerText = "Eruption Successful! 🎉";
+                setTimeout(() => {
+                    resetGame();
+                }, 3000);
+            } else {
+                message.innerText = "Try Again! You need Baking Soda and Vinegar!";
+                lava.style.display = 'none'; // Hide lava on failure
+            }
+        });
+
+        // Reset Game button click event
+        document.getElementById('resetButton').addEventListener('click', () => {
+            resetGame();
+        });
+
+        // Check if correct ingredients are selected
+        function checkIngredients() {
+            return selectedIngredients.includes('baking_soda') && selectedIngredients.includes('vinegar');
+        }
+
+        // Reset the game for a new round
+        function resetGame() {
+            lava.style.height = '0';
+            selectedIngredients = [];
+            message.innerText = "";
+            document.querySelectorAll('.ingredient').forEach(item => {
+                item.classList.remove('selected'); // Reset ingredient selection
+            });
+        }
+    </script>
+</body>
+</html>

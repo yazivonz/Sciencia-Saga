@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Cycle - Sciencia Saga</title>
+  <!-- Font Awesome CDN link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS file link -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Gradient background */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #e8f7ff, #086f8e);
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Content container */
+    .content-container {
+      margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      display: none; /* Hide all content containers initially */
+    }
+
+    /* Active content container */
+    .content-container.active {
+      display: flex; /* Show only the active container */
+    }
+
+    /* Main box styling */
+    .main-box {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .main-box h1 {
+      font-size: 2.5rem;
+      color: #1d4ed8;
+      margin-bottom: 20px;
+    }
+
+    .main-box p {
+      font-size: 1.1rem;
+      color: #374151;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .main-box img {
+      margin-top: 20px;
+      border-radius: 10px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Card container */
+    .cards-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* Card styling */
+    .card {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin: 10px;
+      flex: 1 1 30%;
+      text-align: left;
+      min-width: 250px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    /* Navigation buttons */
+   
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .pagination button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    .pagination button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Footer styling */
+    footer {
+      margin-top: auto;
+      background-color: #1d4ed8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Header styling */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      z-index: 1000;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="images/ScieSaga.png" alt="Sciencia Saga Logo" />
+      Sciencia Saga
+    </a>
+    <nav class="navbar">
+      <a href="index.html#home">home</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#explore">explore</a>
+      <a href="index.html#teacher">Scientist</a>
+      <a href="index.html#gallery">gallery</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+    <div class="icons">
+      <div class="fas fa-user" id="login-btn"></div>
+      <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+  </header>
+
+  <div class="content-container">
+    <div class="main-box">
+      <img src="images/senses.png" alt="Five Senses Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-eye"></i> The Five Senses</h1>
+      <p>The five senses are the physiological capacities that allow us to perceive and interact with the world around us. They include sight, hearing, touch, taste, and smell. Let’s explore each of these senses!</p>
+
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-eye"></i> 1. Sight</h2>
+          <p>Definition: The ability to perceive light and color through the eyes, allowing us to see and interpret our surroundings.</p>
+          <p>Fun Fact: The human eye can distinguish about 10 million different colors!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-volume-up"></i> 2. Hearing</h2>
+          <p>Definition: The ability to detect sound waves through the ears, enabling us to hear music, speech, and environmental sounds.</p>
+          <p>Fun Fact: The range of human hearing is typically between 20 Hz to 20 kHz!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-hand-holding"></i> 3. Touch</h2>
+          <p>Definition: The ability to perceive pressure, temperature, and texture through the skin, providing a sense of physical interaction.</p>
+          <p>Fun Fact: The fingertips have a higher concentration of touch receptors than other parts of the body!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-utensils"></i> 4. Taste</h2>
+          <p>Definition: The ability to perceive flavors through taste buds on the tongue, distinguishing sweet, sour, salty, bitter, and umami.</p>
+          <p>Fun Fact: Humans have about 2,000 to 8,000 taste buds, and they can regenerate every two weeks!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-smog"></i> 5. Smell</h2>
+          <p>Definition: The ability to detect airborne molecules through the nose, which contributes to flavor perception and emotional responses.</p>
+          <p>Fun Fact: The human nose can detect about 1 trillion different scents!</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+  <div class="content-container active">
+    <div class="main-box">
+      <img src="images/watercycle.png" alt="Water Cycle Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-water"></i> The Water Cycle</h1>
+      <p>The water cycle is nature's way of moving water through the environment. It plays a crucial role in the weather
+        and climate. Let's explore how water transforms and travels through various stages!</p>
+
+      <!-- Cards container -->
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-sun"></i> 1. Evaporation</h2>
+          <p>Definition: When the sun heats up water in rivers, lakes, and oceans, it turns into vapor and rises into
+            the air.</p>
+          <p>Fun Fact: Did you know that plants also release water vapor into the air through a process called
+            transpiration?</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-cloud"></i> 2. Condensation</h2>
+          <p>Definition: As the water vapor rises, it cools and turns back into tiny water droplets, forming clouds.</p>
+          <p>Fun Fact: Clouds are made up of millions of tiny water droplets or ice crystals!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-umbrella"></i> 3. Precipitation</h2>
+          <p>Definition: When the clouds become heavy with water droplets, they release the water as rain, snow, sleet,
+            or hail.</p>
+          <p>Fun Fact: The type of precipitation depends on the temperature! If it’s cold, you might get snow; if it’s
+            warm, you’ll get rain.</p>
+        </div>
+
+        <div class="card">
+          <h2> Why is the Water Cycle Important?</h2>
+          <p>The water cycle is a fundamental process that plays a crucial role in sustaining life on Earth. It provides
+            fresh water for drinking, which is essential for all living organisms, including humans, animals, and
+            plants. Without access to clean and reliable water sources, the health and survival of these organisms would
+            be at risk.
+            <br><br>
+            Moreover, the water cycle supports agriculture by supplying irrigation for crops. This is vital for food
+            production, as plants rely on water to grow and thrive. A well-functioning water cycle ensures that the
+            right amount of rainfall occurs, helping to replenish soil moisture and support the growth of healthy
+            plants. This, in turn, contributes to food security for communities around the world.
+            <br><br>
+            In summary, the water cycle is not just a natural phenomenon; it is a vital system that supports life,
+            agriculture, and climate stability. By understanding and valuing this process, we can foster a sense of
+            responsibility towards our water resources and contribute to a sustainable future.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <div class="content-container">
+    <div class="main-box">
+      <img src="images/photosynthesis.png" alt="Photosynthesis Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-seedling"></i> Photosynthesis</h1>
+      <p>Photosynthesis is the process by which green plants, algae, and some bacteria convert sunlight into chemical energy in the form of glucose. Let's dive deeper into how photosynthesis works!</p>
+
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-sun"></i> 1. Light Absorption</h2>
+          <p>Definition: Plants capture sunlight using chlorophyll in their leaves.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-water"></i> 2. Water Uptake</h2>
+          <p>Definition: Roots absorb water from the soil, which travels to the leaves.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-co2"></i> 3. Carbon Dioxide Intake</h2>
+          <p>Definition: Plants take in carbon dioxide from the air through tiny openings called stomata.</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-leaf"></i> 4. Glucose Production</h2>
+          <p>Definition: Using sunlight, water, and carbon dioxide, plants produce glucose and oxygen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination buttons -->
+  <div class="pagination">
+    <button id="prevBtn" disabled>Previous</button>
+    <button id="nextBtn">Next</button>
+  </div>
+  
+  <script>
+    // Pagination script
+    let currentPage = 0;
+    const contentContainers = document.querySelectorAll('.content-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updatePagination() {
+      contentContainers.forEach((container, index) => {
+        container.classList.toggle('active', index === currentPage);
+      });
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === contentContainers.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePagination();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < contentContainers.length - 1) {
+        currentPage++;
+        updatePagination();
+      }
+    });
+
+    // Initialize pagination
+    updatePagination();
+  </script>
+
+
+</body>
+
+</html>

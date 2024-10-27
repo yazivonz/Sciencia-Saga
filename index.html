@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sciencia Saga</title>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- lightgallery css cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+</head>
+
+<body>
+
+    <!-- header section starts -->
+    <header class="header">
+
+        <a href="#" class="logo">
+            <img src="images/ScieSaga.png" alt="Sciencia Saga Logo" />
+            Sciencia Saga
+        </a>
+
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#explore">explore</a>
+            <a href="#teacher">Scientist</a>
+            <a href="#gallery">more</a>
+            <a href="#contact">contact</a>
+        </nav>
+
+        <div class="icons">
+            <div class="bi bi-person-fill" id="login-btn" style="font-size: 4rem; color: #c31f9c;"></div> <!-- Filled person icon -->
+            <div class="bi bi-list" id="menu-btn" style="font-size: 4rem; color: #28a745;"></div> <!-- Menu icon -->
+        </div>
+        
+        
+
+        <form action="" class="login-form">
+            <h3>login now</h3>
+            <input type="email" placeholder="your email" class="box">
+            <input type="password" placeholder="your password" class="box">
+            <p>forget your password <a href="#">click here</a> </p>
+            <input type="submit" value="login now" class="btn">
+        </form>
+
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section starts -->
+
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>welcome to our <span>Sciencia Saga</span></h3>
+            <p>Join us on an exciting journey through the wonders of science, where every discovery is an adventure
+                waiting to unfold! </p>
+            <a href="#" class="btn"> explore now</a>
+        </div>
+
+        <div class="image">
+            <img src="images/home.gif" alt="">
+        </div>
+
+        <div class="custom-shape-divider-bottom-1684324473">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- about us section starts -->
+
+    <section class="about" id="about">
+        <div class="row">
+
+            <div class="image">
+                <img src="images/about.png" alt="">
+            </div>
+
+            <div class="content">
+                <h3>Empowering Minds, Inspiring Futures</h3>
+                <p>Welcome to our science learning community, where we make exploring science fun, accessible, and interactive for young minds. We believe every child is a natural scientist, driven by curiosity about the world, and our goal is to nurture that curiosity through hands-on activities and clear, engaging lessons. From foundational concepts like the water cycle to more exciting topics like forces and motion, we support students at every step of their journey.</p>
+                
+                <p>Our mission is to create an inclusive environment where students feel encouraged to ask questions, experiment, and make discoveries that empower them for life. By fostering a love of learning, we prepare our students to face future challenges with curiosity and confidence, inspiring them to grow, thrive, and make meaningful contributions to the world.</p>
+            </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- about us section ends -->
+
+    <!-- education section start -->
+    <section class="explore" id="explore">
+        <h1 class="heading">Explore our <span> lessons</span></h1>
+
+        <div class="box-container">
+
+            <a href="easy.html">
+                <div class="box">
+                    <h3>EASY</h3>
+                    <p>Learn the basics of science, from the 5 senses, designed to build a strong foundation with easy-to-understand concepts.</p>
+                    <img src="images/education1.gif" alt="">
+                </div>
+            </a>
+            
+            <a href="meduim.html">
+                <div class="box">
+                    <h3>MEDIUM</h3>
+                    <p>Dive deeper into science with topics like electricity, force of motion,  perfect for developing curiosity and understanding.</p>
+                    <img src="images/education2.gif" alt="">
+                </div>
+            </a>
+            
+            <a href="hard.html">
+                <div class="box">
+                    <h3>HARD</h3>
+                    <p>Challenge yourself with advanced topics, including hydrospheres, volcanoes, to build scientific knowledge and critical thinking.</p>
+                    <img src="images/education3.gif" alt="">
+                </div>
+            </a>
+            
+            <a href="difficult.html">
+                <div class="box">
+                    <h3>DIFFICULT</h3>
+                    <p>Explore complex scientific ideas like periodic tables aimed at deepening understanding of science’s real-world applications.</p>
+                    <img src="images/diff.gif" alt="">
+                </div>
+            </a>
+            
+
+        </div>
+    </section>
+
+    <!-- education section ends -->
+
+    <!-- teacher section starts -->
+
+    <section class="teacher" id="teacher">
+
+        <h1 class="heading">Famous <span> Scientist</span></h1>
+
+        <div class="box-container">
+
+            <div class="box" onclick="showModal('einstein')">
+                <img src="images/teacher1.png" alt="">
+                <h3>Albert Einstein</h3>
+                <p>Field of Study: Physics</p>
+            </div>
+            
+            <div class="box" onclick="showModal('newton')">
+                <img src="images/teacher2.png" alt="">
+                <h3>Isaac Newton</h3>
+                <p>Field of Study: Physics and Mathematics</p>
+            </div>
+            
+            <div class="box" onclick="showModal('galileo')">
+                <img src="images/teacher3.png" alt="">
+                <h3>Galileo Galilei</h3>
+                <p>Field of Study: Astronomy and Physics</p>
+            </div>
+            
+            <div class="box" onclick="showModal('tesla')">
+                <img src="images/teacher4.png" alt="">
+                <h3>Nikola Tesla</h3>
+                <p>Field of Study: Electrical Engineering and Physics</p>
+            </div>
+            
+            <div class="box" onclick="showModal('darwin')">
+                <img src="images/teacher5.png" alt="">
+                <h3>Charles Darwin</h3>
+                <p>Field of Study: Biology</p>
+            </div>
+            
+            <div class="box" onclick="showModal('curie')">
+                <img src="images/teacher6.png" alt="">
+                <h3>Marie Curie</h3>
+                <p>Field of Study: Chemistry and Physics</p>
+            </div>
+            
+            <div class="box" onclick="showModal('lovelace')">
+                <img src="images/teacher7.png" alt="">
+                <h3>Ada Lovelace</h3>
+                <p>Field of Study: Mathematics and Computer Science</p>
+            </div>
+            
+            <div class="box" onclick="showModal('franklin')">
+                <img src="images/teacher8.png" alt="">
+                <h3>Rosalind Franklin</h3>
+                <p>Field of Study: Chemistry and Molecular Biology</p>
+            </div>
+</div>            
+
+    </section>
+
+<!-- Modal Popup for Scientists -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="scientist-image" src="" alt="Scientist Image" style="width: 150px; height: auto; margin-bottom: 10px;">
+        <h2 id="scientist-name"></h2>
+        <ul id="scientist-contributions"></ul>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+    <!-- teacher section ends -->
+
+  <!-- activities section starts -->
+<section class="activities">
+    <h1 class="heading">Try Our <span>Activities</span></h1>
+    <div class="box-container">
+        <!-- Box 1 - Water Cycle Exploration -->
+        <div class="box" onclick="window.location.href='wcycle.html'">
+            <img src="../images/activities1.png" alt="Water Cycle Activity">
+            <h3>Water Cycle Exploration</h3>
+        </div>
+
+        <!-- Box 2 - Space Adventure -->
+        <div class="box" onclick="window.location.href='SpaceAdventure.html'">
+            <img src="images/activities2.png" alt="Space Adventure Activity">
+            <h3>Space Adventure</h3>
+        </div>
+
+        <!-- Box 3 - Volcano Eruption Experiment -->
+        <div class="box" onclick="window.location.href='VolcanoEruption.html'">
+            <img src="images/activities3.png" alt="Volcano Eruption Experiment">
+            <h3>Volcano Eruption Experiment</h3>
+        </div>
+
+        <!-- Box 4 - Plant Growth Study -->
+        <div class="box" onclick="window.location.href='PlantGrowth.html'">
+            <img src="images/activities4.png" alt="Plant Growth Study">
+            <h3>Plant Growth Study</h3>
+        </div>
+    </div>
+</section>
+
+    <!-- activities section ends -->
+
+    <!-- gallery section starts -->
+
+    <section class="gallery" id="gallery">
+
+        <h1 class="heading">More <span>Topics To learn</span></h1>
+
+        <div class="gallery-container">
+
+            <a href="images/gallery/1.png" class="box">
+                <img src="images/gallery/1.png" alt="">
+                <div class="icon"> <i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/gallery/2.png" class="box">
+                <img src="images/gallery/2.png" alt="">
+                <div class="icon"> <i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/gallery/3.png" class="box">
+                <img src="images/gallery/3.png" alt="">
+                <div class="icon"> <i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/gallery/4.png" class="box">
+                <img src="images/gallery/4.png" alt="">
+                <div class="icon"> <i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/gallery/5.png" class="box">
+                <img src="images/gallery/5.png" alt="">
+                <div class="icon"> <i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/gallery/6.png" class="box">
+                <img src="images/gallery/6.png" alt="">
+                <div class="icon"> <i class="fas fa-plus"></i></div>
+            </a>
+            <a href="images/gallery/8.png" class="box">
+                <img src="images/gallery/8.png" alt="">
+                <div class="icon"> <i class="fas fa-plus"></i></div>
+            </a>
+
+            <a href="images/gallery/9.png" class="box">
+                <img src="images/gallery/9.png" alt="">
+                <div class="icon"> <i class="fas fa-plus"></i></div>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- gallery section ends -->
+
+    <!-- contact section starts -->
+
+    <section class="contact" id="contact">
+
+        <h1 class="heading"> <span>contact</span> us</h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="images/contact.gif" alt="">
+            </div>
+
+            <form action="">
+                <h3>get in touch</h3>
+                <div class="inputBox">
+                    <input type="text" placeholder="your name">
+                    <input type="email" placeholder="your email">
+                </div>
+                <div class="inputBox">
+                    <input type="number" placeholder="your number">
+                    <input type="text" placeholder="your subject">
+                </div>
+                <textarea placeholder="your message" cols="30" rows="10"></textarea>
+                <input type="submit" value="send message" class="btn">
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- contact section ends -->
+
+    <!-- footer section starts -->
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <a href="#" class="logo">
+                    <img src="images/ScieSaga.png" alt="Sciencia Saga Logo" />
+                  
+                </a>
+                <p>Join us on an exciting journey through the wonders of science, where every discovery is an adventure waiting to unfold!</p>
+            </div>
+
+            <div class="box">
+                <h3>category</h3>
+                <a href="#"> <i class="fas fa-caret-right"></i> about us</a>
+                <a href="#"> <i class="fas fa-caret-right"></i> Science</a>
+                <a href="#"> <i class="fas fa-caret-right"></i> Science Some Lessons</a>
+                <a href="#"> <i class="fas fa-caret-right"></i> Activites to do</a>
+                <a href="#"> <i class="fas fa-caret-right"></i> contact us</a>
+            </div>
+
+            <div class="box">
+                <h3>extra links</h3>
+                <a href="#"> <i class="fas fa-caret-right"></i> privacy policy</a>
+                <a href="#"> <i class="fas fa-caret-right"></i> terms of use</a>
+                <a href="#"> <i class="fas fa-caret-right"></i> site map</a>
+                <a href="#"> <i class="fas fa-caret-right"></i> FAQs</a>
+                <a href="#"> <i class="fas fa-caret-right"></i> accessibility statement</a>
+            </div>
+
+        </div>
+
+        <div class="credit"> &copy; All right  reserved @2024 by <span>Sciencia Saga.</span></div>
+
+    </section>
+
+
+
+    <!-- footer section ends -->
+
+    <!-- lightgallery cdn js link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+    <!-- custom js file link -->
+    <script src="script.js"></script>
+
+    <script>
+        lightGallery(document.querySelector('.gallery .gallery-container'));
+
+        // Scientist contributions
+const scientists = {
+    'einstein': {
+        name: 'Albert Einstein',
+        image: 'images/teacher1.png',
+        contributions: [
+            'Developed the theory of relativity.',
+            'Contributed to the development of quantum mechanics.',
+            'E=mc², the mass-energy equivalence formula.'
+        ]
+    },
+    'newton': {
+        name: 'Isaac Newton',
+        image: 'images/teacher2.png',
+        contributions: [
+            'Formulated the laws of motion.',
+            'Discovered the law of universal gravitation.',
+            'Contributed to the development of calculus.'
+        ]
+    },
+    'galileo': {
+        name: 'Galileo Galilei',
+        image: 'images/teacher3.png',
+        contributions: [
+            'Improved the design of the telescope.',
+            'Supported and confirmed the heliocentric model of the solar system.',
+            'Made significant discoveries in astronomy, including Jupiter’s moons.'
+        ]
+    },
+    'tesla': {
+        name: 'Nikola Tesla',
+        image: 'images/teacher4.png',
+        contributions: [
+            'Pioneered the development of alternating current (AC) electricity.',
+            'Invented the Tesla coil, used in radio technology.',
+            'Contributed to wireless transmission technology.'
+        ]
+    },
+    'darwin': {
+        name: 'Charles Darwin',
+        image: 'images/teacher5.png',
+        contributions: [
+            'Developed the theory of evolution by natural selection.',
+            'Published "On the Origin of Species".',
+            'Contributed to the understanding of species diversity and adaptation.'
+        ]
+    },
+    'curie': {
+        name: 'Marie Curie',
+        image: 'images/teacher6.png',
+        contributions: [
+            'Pioneered research on radioactivity.',
+            'Discovered the elements polonium and radium.',
+            'First woman to win a Nobel Prize, and the only person to win in two scientific fields (Physics and Chemistry).'
+        ]
+    },
+    'lovelace': {
+        name: 'Ada Lovelace',
+        image: 'images/teacher7.png',
+        contributions: [
+            'First computer programmer.',
+            'Created an algorithm for Charles Babbage’s early mechanical general-purpose computer, the Analytical Engine.',
+            'Envisioned the future applications of computing beyond number-crunching.'
+        ]
+    },
+    'franklin': {
+        name: 'Rosalind Franklin',
+        image: 'images/teacher8.png',
+        contributions: [
+            'Contributed to the discovery of the DNA double helix structure through X-ray crystallography.',
+            'Worked on the molecular structures of viruses.',
+            'Made significant advances in understanding the structure of RNA.'
+        ]
+    }
+};
+
+
+// Show modal with scientist's contribution
+function showModal(scientistKey) {
+    const scientist = scientists[scientistKey];
+    document.getElementById('scientist-name').innerText = scientist.name;
+    document.getElementById('scientist-image').src = scientist.image;
+    
+    // Clear existing contributions and append new ones as bullet points
+    const contributionList = document.getElementById('scientist-contributions');
+    contributionList.innerHTML = ''; // Clear the existing list
+    scientist.contributions.forEach(contribution => {
+        const listItem = document.createElement('li');
+        listItem.innerText = contribution;
+        contributionList.appendChild(listItem);
+    });
+
+    // Spin the card
+    document.querySelector(`.box[onclick="showModal('${scientistKey}')"]`).classList.add('clicked');
+
+    // Show the modal
+    document.getElementById('modal').style.display = 'flex';
+}
+
+
+// Close modal
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+
+    // Remove spin animation from all boxes
+    document.querySelectorAll('.box').forEach(box => {
+        box.classList.remove('clicked');
+    });
+}
+
+
+    </script>
+
+</body>
+
+</html>

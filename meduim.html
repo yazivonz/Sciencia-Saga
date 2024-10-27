@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Cycle - Sciencia Saga</title>
+  <!-- Font Awesome CDN link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS file link -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Gradient background */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #e8f7ff, #086f8e);
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Content container */
+    .content-container {
+      margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      display: none; /* Hide all content containers initially */
+    }
+
+    /* Active content container */
+    .content-container.active {
+      display: flex; /* Show only the active container */
+    }
+
+    /* Main box styling */
+    .main-box {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .main-box h1 {
+      font-size: 2.5rem;
+      color: #1d4ed8;
+      margin-bottom: 20px;
+    }
+
+    .main-box p {
+      font-size: 1.1rem;
+      color: #374151;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .main-box img {
+      margin-top: 20px;
+      border-radius: 10px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Card container */
+    .cards-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* Card styling */
+    .card {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin: 10px;
+      flex: 1 1 30%;
+      text-align: left;
+      min-width: 250px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    /* Navigation buttons */
+   
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .pagination button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    .pagination button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Footer styling */
+    footer {
+      margin-top: auto;
+      background-color: #1d4ed8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Header styling */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      z-index: 1000;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="images/ScieSaga.png" alt="Sciencia Saga Logo" />
+      Sciencia Saga
+    </a>
+    <nav class="navbar">
+      <a href="index.html#home">home</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#explore">explore</a>
+      <a href="index.html#teacher">Scientist</a>
+      <a href="index.html#gallery">gallery</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+    <div class="icons">
+      <div class="fas fa-user" id="login-btn"></div>
+      <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+  </header>
+
+  <div class="content-container active">
+    <div class="main-box">
+      <img src="images/electricity.png" alt="Electricity Diagram" class="w-full rounded-lg">
+      <h1 class="icon"><i class="fas fa-bolt"></i> Electric Forces</h1>
+      <p>Electric forces are fundamental interactions that occur between charged particles. They play a crucial role in electricity and magnetism. Let’s explore how electric forces work and their effects in our everyday lives!</p>
+
+      <!-- Cards container -->
+      <div class="cards-container">
+        <div class="card">
+          <h2><i class="fas fa-plug"></i> 1. Static Electricity</h2>
+          <p>Definition: Static electricity is the buildup of electric charge on the surface of objects. This can occur through friction, such as rubbing a balloon on your hair.</p>
+          <p>Fun Fact: You can see static electricity in action when you touch a doorknob after walking on a carpet and feel a tiny shock!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-battery-half"></i> 2. Electric Charge</h2>
+          <p>Definition: Electric charge is a property of subatomic particles, such as electrons and protons. Like charges repel each other, while opposite charges attract.</p>
+          <p>Fun Fact: There are two types of electric charge: positive and negative. Protons have a positive charge, while electrons have a negative charge!</p>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-lightbulb"></i> 3. Electric Current</h2>
+          <p>Definition: Electric current is the flow of electric charge through a conductor, typically measured in amperes (A). It powers our homes and devices.</p>
+          <p>Fun Fact: Electric current can flow through metals, which are good conductors, while materials like rubber and wood act as insulators, preventing current flow.</p>
+        </div>
+
+        <div class="card">
+          <h2> Why are Electric Forces Important?</h2>
+          <p>Electric forces are essential for many technologies that power our modern lives. They enable the functioning of electrical devices, from simple light bulbs to complex computers.
+            <br><br>
+            Furthermore, electric forces play a significant role in various natural phenomena, such as lightning. Understanding electric forces helps us harness electricity safely for daily use.
+            <br><br>
+            In summary, electric forces are not just a scientific concept; they are a crucial aspect of technology and nature that affects our everyday lives. By understanding and respecting these forces, we can ensure safe and efficient use of electricity and contribute to technological advancements.</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="content-container active">
+  <div class="main-box">
+    <img src="images/energy.png" alt="Forms of Energy Diagram" class="w-full rounded-lg">
+    <h1 class="icon"><i class="fas fa-lightbulb"></i> Forms of Energy</h1>
+    <p>Energy is the ability to do work and exists in various forms all around us. Understanding these forms of energy is essential for grasping how our world operates. Let’s explore the different types of energy and their applications!</p>
+
+    <!-- Cards container -->
+    <div class="cards-container">
+      <div class="card">
+        <h2><i class="fas fa-fire"></i> 1. Thermal Energy</h2>
+        <p>Definition: Thermal energy is the energy that comes from the temperature of matter. The hotter an object, the more thermal energy it possesses.</p>
+        <p>Fun Fact: Thermal energy can be transferred through conduction, convection, and radiation, making it essential for heating systems and weather patterns!</p>
+      </div>
+
+      <div class="card">
+        <h2><i class="fas fa-sun"></i> 2. Solar Energy</h2>
+        <p>Definition: Solar energy is the energy obtained from the sun's rays. It can be converted into thermal or electrical energy using solar panels.</p>
+        <p>Fun Fact: Solar energy is a renewable resource and can significantly reduce reliance on fossil fuels, contributing to a cleaner environment!</p>
+      </div>
+
+      <div class="card">
+        <h2><i class="fas fa-bolt"></i> 3. Electrical Energy</h2>
+        <p>Definition: Electrical energy is the energy caused by the movement of electrons. It powers our homes, devices, and appliances.</p>
+        <p>Fun Fact: Electrical energy can be generated from various sources, including fossil fuels, solar panels, and wind turbines!</p>
+      </div>
+
+      <div class="card">
+        <h2> Why are Forms of Energy Important?</h2>
+        <p>Understanding the various forms of energy is crucial for numerous reasons. It helps us harness energy for daily activities, such as cooking, heating, and transportation.
+          <br><br>
+          Additionally, knowledge of energy forms encourages us to use renewable resources, promoting sustainability and reducing our carbon footprint.
+          <br><br>
+          In summary, energy is a vital part of our lives, influencing everything from technology to the environment. By learning about the different forms of energy, we can make informed choices that benefit both ourselves and the planet.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-container active">
+  <div class="main-box">
+    <img src="images/force_motion.png" alt="Forces and Motion Diagram" class="w-full rounded-lg">
+    <h1 class="icon"><i class="fas fa-arrow-right"></i> Forces and Motion</h1>
+    <p>Forces and motion are fundamental concepts in physics that explain how and why objects move. Understanding these principles helps us comprehend the world around us. Let’s explore the key concepts related to forces and motion!</p>
+
+    <!-- Cards container -->
+    <div class="cards-container">
+      <div class="card">
+        <h2><i class="fas fa-hand-pointer"></i> 1. Force</h2>
+        <p>Definition: A force is a push or pull on an object that can cause it to accelerate, change direction, or deform. Forces are measured in newtons (N).</p>
+        <p>Fun Fact: The Earth’s gravitational force pulls objects toward its center, which is why things fall when dropped!</p>
+      </div>
+
+      <div class="card">
+        <h2><i class="fas fa-ruler-combined"></i> 2. Motion</h2>
+        <p>Definition: Motion refers to the change in position of an object over time. It can be described in terms of speed, velocity, and acceleration.</p>
+        <p>Fun Fact: An object in motion will stay in motion unless acted upon by an unbalanced force, according to Newton’s First Law of Motion!</p>
+      </div>
+
+      <div class="card">
+        <h2><i class="fas fa-tachometer-alt"></i> 3. Newton’s Laws of Motion</h2>
+        <p>Definition: Newton’s laws describe the relationship between a body and the forces acting on it, outlining how it will move. The three laws are:</p>
+        <ul>
+          <li>1st Law: An object at rest stays at rest, and an object in motion stays in motion unless acted upon.</li>
+          <li>2nd Law: Force equals mass times acceleration (F = ma).</li>
+          <li>3rd Law: For every action, there is an equal and opposite reaction.</li>
+        </ul>
+        <p>Fun Fact: These laws apply to everything from simple objects like balls to complex systems like rockets!</p>
+      </div>
+
+      <div class="card">
+        <h2> Why are Forces and Motion Important?</h2>
+        <p>Forces and motion are crucial for understanding how things work in our universe. They govern everything from the way we walk to the mechanics of vehicles and machines.
+          <br><br>
+          A solid grasp of these concepts is essential for fields such as engineering, aviation, and even sports, helping us design better technology and improve performance.
+          <br><br>
+          In summary, forces and motion are foundational principles that shape our understanding of the physical world. By studying these concepts, we can innovate, create, and engage with our environment more effectively.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Pagination buttons -->
+  <div class="pagination">
+    <button id="prevBtn" disabled>Previous</button>
+    <button id="nextBtn">Next</button>
+  </div>
+  
+  <script>
+    // Pagination script
+    let currentPage = 0;
+    const contentContainers = document.querySelectorAll('.content-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updatePagination() {
+      contentContainers.forEach((container, index) => {
+        container.classList.toggle('active', index === currentPage);
+      });
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === contentContainers.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePagination();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < contentContainers.length - 1) {
+        currentPage++;
+        updatePagination();
+      }
+    });
+
+    // Initialize pagination
+    updatePagination();
+  </script>
+
+
+</body>
+
+</html>

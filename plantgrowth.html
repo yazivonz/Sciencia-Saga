@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Growth QuizBee</title>
+    <style>
+        /* Body and Background */
+        body {
+            background: url('../images/activities/planx.gif') no-repeat center center;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 200px;
+        }
+
+        /* QuizBee container styling */
+        .quizbee-game {
+            width: 400px;
+            margin: 50px auto;
+            padding: 70px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: rgba(241, 248, 233, 0.9);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #2e7d32;
+        }
+
+        p {
+            color: #4CAF50;
+        }
+
+        /* Button styling */
+        .quizbee-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #4CAF50;
+        }
+
+        /* Question styling */
+        .quiz-question {
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        .answer-options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .answer-options li {
+            margin: 5px 0;
+        }
+
+        .answer-options input {
+            margin-right: 10px;
+        }
+
+        /* Modal for displaying results */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: left;
+        }
+
+        .modal h3 {
+            color: #2e7d32;
+        }
+
+        .modal p {
+            color: #555;
+        }
+
+        .close-btn {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .close-btn:hover {
+            background-color: #4CAF50;
+        }
+
+        /* Styled cards for displaying answers */
+        .result-content {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .result-card {
+            background-color: #f1f8e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .result-card h4 {
+            color: #388e3c;
+            margin-bottom: 5px;
+        }
+
+        .result-card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .correct-answer {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .incorrect-answer {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quizbee-game">
+        <h2>Plant Growth QuizBee</h2>
+        <p>Select your difficulty level and answer the questions!</p>
+
+        <div id="level-selection">
+            <p><strong>Select Challenge Level:</strong></p>
+            <div class="quizbee-buttons">
+                <button class="button" onclick="startQuiz('easy')">Easy</button>
+                <button class="button" onclick="startQuiz('medium')">Medium</button>
+                <button class="button" onclick="startQuiz('hard')">Hard</button>
+            </div>
+        </div>
+
+        <div id="quiz-container" style="display:none;">
+            <div id="question-container"></div>
+
+            <div class="quizbee-buttons">
+                <button class="button" onclick="submitAnswer()">Submit Answer</button>
+                <button class="button" onclick="resetQuiz()">Reset Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal to display quiz results -->
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">Close</button>
+            <h3>Quiz Results</h3>
+            <div id="result-content" class="result-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = {
+            easy: [
+        { question: "What part of the plant helps absorb sunlight?", options: ['Roots', 'Leaves', 'Stem', 'Flower'], correctAnswer: 'Leaves' },
+        { question: "What process do plants use to make their own food?", options: ['Photosynthesis', 'Respiration', 'Evaporation', 'Transpiration'], correctAnswer: 'Photosynthesis' },
+        { question: "Which part of the plant absorbs water?", options: ['Roots', 'Leaves', 'Stem', 'Flower'], correctAnswer: 'Roots' },
+        { question: "What do plants need to grow?", options: ['Sunlight', 'Oxygen', 'Hydrogen', 'Nitrogen'], correctAnswer: 'Sunlight' },
+        { question: "What gas do plants release during photosynthesis?", options: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Hydrogen'], correctAnswer: 'Oxygen' }
+    ],
+    medium: [
+        { question: "Which pigment is responsible for the green color in plants?", options: ['Carotene', 'Chlorophyll', 'Anthocyanin', 'Xanthophyll'], correctAnswer: 'Chlorophyll' },
+        { question: "In which part of the plant cell does photosynthesis primarily occur?", options: ['Nucleus', 'Mitochondria', 'Chloroplast', 'Ribosome'], correctAnswer: 'Chloroplast' },
+        { question: "What type of energy do plants use to perform photosynthesis?", options: ['Electrical', 'Kinetic', 'Chemical', 'Light'], correctAnswer: 'Light' },
+        { question: "Which element is essential for plants to produce chlorophyll?", options: ['Iron', 'Magnesium', 'Calcium', 'Potassium'], correctAnswer: 'Magnesium' },
+        { question: "What is the main sugar produced by plants during photosynthesis?", options: ['Glucose', 'Fructose', 'Lactose', 'Sucrose'], correctAnswer: 'Glucose' }
+    ],
+    hard: [
+        { question: "What is the primary electron donor in photosynthesis?", options: ['Carbon Dioxide', 'Water', 'Oxygen', 'Glucose'], correctAnswer: 'Water' },
+        { question: "In which specific part of the chloroplast does the light-dependent reaction occur?", options: ['Stroma', 'Thylakoid Membrane', 'Granum', 'Outer Membrane'], correctAnswer: 'Thylakoid Membrane' },
+        { question: "What compound is produced in the Calvin Cycle and used to form glucose?", options: ['ATP', 'RuBP', 'NADPH', 'G3P'], correctAnswer: 'G3P' },
+        { question: "What is the name of the enzyme that captures carbon dioxide in the Calvin Cycle?", options: ['ATP Synthase', 'Rubisco', 'NADP+', 'Cytochrome'], correctAnswer: 'Rubisco' },
+        { question: "Which gas do plants primarily absorb from the atmosphere during photosynthesis?", options: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Methane'], correctAnswer: 'Carbon Dioxide' }
+    ]
+        };
+
+        let currentLevel = '';
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let correctAnswers = [];
+
+        function startQuiz(level) {
+            currentLevel = level;
+            currentQuestionIndex = 0;
+            score = 0;
+            correctAnswers = [];
+            document.getElementById('level-selection').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const questionData = quizData[currentLevel][currentQuestionIndex];
+            const questionContainer = document.getElementById('question-container');
+            questionContainer.innerHTML = `
+                <div class="quiz-question">
+                    <p><strong>Question:</strong> ${questionData.question}</p>
+                    <ul class="answer-options">
+                        ${questionData.options.map(option => `
+                            <li>
+                                <label>
+                                    <input type="radio" name="answer" value="${option}">
+                                    ${option}
+                                </label>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        function submitAnswer() {
+            const questionData = quizData[currentLevel][currentQuestionIndex];
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+
+            if (!selectedOption) {
+                alert('Please select an answer!');
+                return;
+            }
+
+            const isCorrect = selectedOption.value === questionData.correctAnswer;
+            if (isCorrect) score++;
+
+            correctAnswers.push({
+                question: questionData.question,
+                selectedAnswer: selectedOption.value,
+                correctAnswer: questionData.correctAnswer,
+                isCorrect: isCorrect
+            });
+
+            currentQuestionIndex++;
+            currentQuestionIndex < quizData[currentLevel].length ? showQuestion() : showResult();
+        }
+
+        function showResult() {
+            const resultModal = document.getElementById('result-modal');
+            const resultContent = document.getElementById('result-content');
+
+            resultContent.innerHTML = `
+                <p>You scored <strong>${score}</strong> out of <strong>${quizData[currentLevel].length}</strong>!</p>
+                ${correctAnswers.map(answer => `
+                    <div class="result-card">
+                        <h4>${answer.question}</h4>
+                        <p><strong>Your Answer:</strong> 
+                            <span class="${answer.isCorrect ? 'correct-answer' : 'incorrect-answer'}">${answer.selectedAnswer}</span>
+                        </p>
+                        ${!answer.isCorrect ? `<p><strong>Correct Answer:</strong> ${answer.correctAnswer}</p>` : ''}
+                    </div>
+                `).join('')}
+            `;
+
+            resultModal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+            resetQuiz();
+        }
+
+        function resetQuiz() {
+            currentLevel = '';
+            currentQuestionIndex = 0;
+            score = 0;
+            correctAnswers = [];
+            document.getElementById('level-selection').style.display = 'block';
+            document.getElementById('quiz-container').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
